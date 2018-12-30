@@ -65,7 +65,7 @@ class BeatStateMachine(object):
         #of its period.
         #Except in init function, inaccuracy should always be calculated by subtracting the minimum
         #beat width from the maximum beat width, i.e.:
-        #bmin, bmax = self.beat_width
+        #bmin, bmax = self.fpb
         #beat_inaccuracy = max-min
         #but for beat 1, our inaccuracy is 0 since we assume we know exactly when beat 1 occurs.
         beat_inaccuracy = 0
@@ -83,7 +83,7 @@ class BeatStateMachine(object):
     def register_beat(self, pos, nframes):
         """
         Signals position at time of detected beat change.
-        This is a good time also to detect opportunities to shrink the beat_width
+        This is a good time also to detect opportunities to shrink the fpb
         window for more accurate beat predictions.
         Do not register beat when transport is moved. This will lead to unexpected
         behavior.
